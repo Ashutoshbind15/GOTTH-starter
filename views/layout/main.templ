@@ -1,0 +1,26 @@
+package layout
+
+templ header(title string) {
+    <head>
+		<title>{ title }</title>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<script src="public/js/htmx.min.js"></script>
+        <link rel="stylesheet" href="public/css/style.css"/>
+	</head>
+}
+
+templ footer() {
+	<footer class="bg-primary-600 p-4"></footer>
+}
+
+templ Layout(children templ.Component, title string) {
+    @header(title)
+	<body class="flex flex-col h-full bg-white">
+		
+		<main class="flex-1 container ">
+			@children
+		</main>
+		@footer()
+	</body>
+}

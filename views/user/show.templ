@@ -1,0 +1,33 @@
+package user
+
+templ Show(name string) {
+	<div>
+        <p class="bg-blue-600">Hello, { name }</p>
+        if name == "admin" {
+            <p>Admin, you are the best!</p>
+        } else {
+            <p>Normal user, you are also the best!</p>
+        }
+    </div>
+}
+
+templ SignupForm() {
+    <form hx-post="/signup" hx-swap="none" hx-disabled-elt="find button">
+        <div class="form-control" >
+            <input type="text" name="username" placeholder="Username" required class="input">
+            <div id="usererr"></div>
+        </div>
+        <div class="form-control">
+            <input type="password" name="password" placeholder="password" required class="input">
+        </div>
+
+        <button class="" type="submit">
+            Click me
+        </button>
+        <span class="loading loading-spinner loading-sm htmx-indicator"></span>
+    </form>
+}
+
+templ UserExistsError() {
+    <div class="text-red-600" hx-swap-oob="true" id="usererr">User already exists</div>
+}
